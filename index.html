@@ -125,6 +125,41 @@ a:hover {
 }
 
 /* =========================================================
+   TOP BANNER
+   ========================================================= */
+
+.top-banner {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 18vh, 220px);
+  overflow: hidden;
+  position: relative;
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--paper-deep);
+}
+
+.top-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.top-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(239, 232, 218, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* =========================================================
    LAYOUT HELPERS
    ========================================================= */
 
@@ -235,7 +270,7 @@ a:hover {
    ========================================================= */
 
 .hero {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 280px);
   display: flex;
   align-items: center;
   padding: 4rem 0 6rem;
@@ -1211,6 +1246,13 @@ a:hover {
     </ul>
   </div>
 </nav>
+
+<!-- ========================================================
+     TOP BANNER
+     ======================================================== -->
+<div class="top-banner" aria-hidden="true">
+  <img src="images/spread-banner.jpg" alt="">
+</div>
 
 <!-- ========================================================
      HERO
