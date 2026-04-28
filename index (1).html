@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loose Threads Press — A small press in Kitchener-Waterloo</title>
+<meta name="description" content="Loose Threads Press is a feminist literary small press based in Kitchener-Waterloo, publishing limited-run editions of experimental poetry, fiction, and creative nonfiction.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* =========================================================
+   LOOSE THREADS PRESS — STYLES
+   Aesthetic: cream paper, ink, oxblood, threads, asymmetry
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:        #EFE8DA;
+  --paper-light:  #F5EFE3;
+  --paper-deep:   #E2D8C0;
+  --ink:          #1C1612;
+  --ink-soft:     #5C4F44;
+  --ink-faint:    #8B7E6F;
+  --accent:       #8C2330;   /* oxblood — like ink, like thread */
+  --thread:       #B85A3F;   /* warmer thread red */
+  --teal:         #2D4A52;   /* deep teal accent */
+  --gold:         #A88534;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'EB Garamond', Georgia, serif;
+  --font-mono:    'Courier Prime', 'Courier New', monospace;
+
+  --max-w:        1280px;
+  --gutter:       2rem;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Paper grain overlay — subtle texture across whole site */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.11  0 0 0 0 0.085  0 0 0 0 0.07  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.label, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 50;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+p + p { text-indent: 0; }
+
+em { font-style: italic; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper-light);
+}
+
+/* =========================================================
+   TOP BANNER
+   ========================================================= */
+
+.top-banner {
+  display: block;
+  width: 100%;
+  height: clamp(120px, 18vh, 220px);
+  overflow: hidden;
+  position: relative;
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--paper-deep);
+}
+
+.top-banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.top-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    rgba(239, 232, 218, 0.4) 100%
+  );
+  pointer-events: none;
+}
+
+/* =========================================================
+   LAYOUT HELPERS
+   ========================================================= */
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding: 8rem 0;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(239, 232, 218, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.nav.scrolled {
+  border-bottom-color: var(--paper-deep);
+}
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1.25rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav-mark {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 24, "SOFT" 50;
+  color: var(--ink);
+  border: none;
+  letter-spacing: 0.02em;
+}
+
+.nav-mark::after {
+  content: '·';
+  margin: 0 0.5rem;
+  color: var(--accent);
+}
+
+.nav-mark .mark-end {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: none;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  min-height: calc(100vh - 280px);
+  display: flex;
+  align-items: center;
+  padding: 4rem 0 6rem;
+  position: relative;
+}
+
+.hero-inner {
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  color: var(--ink-soft);
+}
+
+.hero-eyebrow .stitch {
+  flex: 1;
+  max-width: 8rem;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--ink-soft) 50%, transparent 50%);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  line-height: 0.92;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 20;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+  max-width: 14ch;
+}
+
+.hero-title .word-loose { display: block; }
+.hero-title .word-threads {
+  display: block;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--accent);
+  margin-left: 1.5em;
+}
+.hero-title .word-press {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.18em;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 1.5em;
+  margin-left: 0.5em;
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 70;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.4;
+  max-width: 32ch;
+  color: var(--ink-soft);
+  margin-top: 3rem;
+  padding-left: 2rem;
+  border-left: 1px solid var(--accent);
+}
+
+/* Floating thread SVGs in hero */
+.hero-thread {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-thread-1 {
+  top: 8%;
+  right: -2%;
+  width: 40%;
+  max-width: 500px;
+  opacity: 0.7;
+}
+
+.hero-thread-2 {
+  bottom: 5%;
+  left: 35%;
+  width: 30%;
+  max-width: 400px;
+  opacity: 0.5;
+}
+
+@media (max-width: 720px) {
+  .hero-thread { display: none; }
+}
+
+/* =========================================================
+   MANIFESTO / ABOUT
+   ========================================================= */
+
+.manifesto {
+  background: var(--paper-deep);
+  position: relative;
+  padding: 10rem 0;
+}
+
+.manifesto::before, .manifesto::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='24' viewBox='0 0 40 24'><path d='M0 12 Q 5 4, 10 12 T 20 12 T 30 12 T 40 12' stroke='%231C1612' stroke-width='1' fill='none' opacity='0.3'/></svg>");
+  background-repeat: repeat-x;
+}
+
+.manifesto::before { top: -12px; }
+.manifesto::after  { bottom: -12px; }
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.manifesto-side h2 {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+}
+
+.manifesto-side h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  line-height: 1.4;
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+  color: var(--ink);
+  padding: 2.5rem 0;
+  margin: 2rem 0;
+  border-top: 1px solid var(--ink-soft);
+  border-bottom: 1px solid var(--ink-soft);
+  position: relative;
+}
+
+.pull-quote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: -1rem;
+  font-size: 6rem;
+  font-family: var(--font-display);
+  color: var(--accent);
+  line-height: 1;
+  font-style: normal;
+  font-variation-settings: "opsz" 144;
+}
+
+.manifesto-body p {
+  font-size: 1.18rem;
+  line-height: 1.7;
+}
+
+.manifesto-body p:first-child::first-letter {
+  font-family: var(--font-display);
+  float: left;
+  font-size: 4.5rem;
+  line-height: 0.85;
+  padding-right: 0.6rem;
+  padding-top: 0.5rem;
+  color: var(--accent);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 70;
+}
+
+/* Manifesto image — the actual fountain pen on the page */
+.manifesto-image {
+  margin-top: 2.5rem;
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: rotate(-1.2deg);
+  transition: transform 0.5s ease;
+}
+
+.manifesto-image:hover {
+  transform: rotate(0deg);
+}
+
+.manifesto-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow:
+    0 1px 1px rgba(0,0,0,0.04),
+    0 4px 12px rgba(28, 22, 18, 0.18),
+    0 14px 40px rgba(28, 22, 18, 0.18);
+  border: 1px solid rgba(28, 22, 18, 0.12);
+}
+
+.manifesto-image figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Hero image accent — small framed photo to one side of wordmark */
+.hero-photo {
+  position: absolute;
+  bottom: 4%;
+  right: 4%;
+  width: 240px;
+  max-width: 28%;
+  z-index: 1;
+  transform: rotate(2.5deg);
+  transition: transform 0.4s ease;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.06),
+    0 10px 30px rgba(28, 22, 18, 0.22);
+  border: 1px solid rgba(28, 22, 18, 0.1);
+}
+
+.hero-photo:hover {
+  transform: rotate(0deg);
+}
+
+@media (max-width: 720px) {
+  .hero-photo { display: none; }
+}
+
+/* Photo on the book cover — replaces the SVG collage strip */
+.book-cover-photo {
+  position: absolute;
+  inset: auto 1.5rem 22% 1.5rem;
+  height: 100px;
+  overflow: hidden;
+  border: 1px solid rgba(28, 22, 18, 0.15);
+  pointer-events: none;
+}
+
+.book-cover-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.05) saturate(1.05);
+}
+
+/* =========================================================
+   THE CYCLE
+   ========================================================= */
+
+.cycle {
+  padding: 10rem 0;
+}
+
+.cycle-intro {
+  max-width: 38rem;
+  margin-bottom: 5rem;
+}
+
+.cycle-intro h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.cycle-intro p {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.cycle-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 4rem 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.cycle-stat {
+  padding: 2rem 1rem;
+  text-align: center;
+  border-right: 1px solid var(--ink-soft);
+}
+
+.cycle-stat:last-child { border-right: none; }
+
+.cycle-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cycle-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 720px) {
+  .cycle-stats {
+    grid-template-columns: 1fr;
+  }
+  .cycle-stat {
+    border-right: none;
+    border-bottom: 1px solid var(--ink-soft);
+  }
+  .cycle-stat:last-child { border-bottom: none; }
+}
+
+.cycle-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+@media (max-width: 880px) {
+  .cycle-cards {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.cycle-card {
+  position: relative;
+  padding: 2rem 0 0;
+}
+
+.cycle-card-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.cycle-card h3 {
+  font-style: normal;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-variation-settings: "opsz" 60, "SOFT" 30;
+}
+
+.cycle-card h3 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.cycle-card p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cycle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 1px;
+  background: var(--ink);
+}
+
+.cycle-invitations {
+  margin-top: 6rem;
+  padding: 3rem;
+  background: var(--paper-light);
+  border: 1px solid var(--paper-deep);
+  position: relative;
+}
+
+.cycle-invitations h3 {
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+.cycle-invitations ul {
+  list-style: none;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.cycle-invitations li {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.cycle-invitations li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* =========================================================
+   FIRST PUBLICATION ANNOUNCEMENT
+   ========================================================= */
+
+.first-pub {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.first-pub::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.first-pub .container { position: relative; z-index: 2; }
+
+.first-pub .label, .first-pub .section-label {
+  color: var(--paper-deep);
+}
+
+.first-pub .section-label::before {
+  background: var(--thread);
+}
+
+.announce-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .announce-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Stylized book cover */
+.book-cover {
+  aspect-ratio: 5 / 7;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 2.5rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.08),
+    8px 12px 0 var(--accent),
+    8px 12px 30px rgba(0,0,0,0.5);
+  transform: rotate(-2deg);
+  transition: transform 0.4s ease;
+  max-width: 380px;
+}
+
+.book-cover:hover {
+  transform: rotate(0deg);
+}
+
+.book-cover-frame {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid var(--ink);
+  pointer-events: none;
+}
+
+.book-cover-imprint {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: auto;
+}
+
+.book-cover-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.05;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+  margin: 2rem 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.book-cover-title em {
+  font-style: italic;
+  color: var(--accent);
+  display: block;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.book-cover-rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--accent);
+  margin: 1rem 0;
+}
+
+.book-cover-byline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  font-variation-settings: "opsz" 24, "SOFT" 70;
+}
+
+.book-cover-collage {
+  position: absolute;
+  inset: auto 0 35% 0;
+  height: 80px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.announce-text h2 {
+  color: var(--paper-light);
+  margin-bottom: 1.5rem;
+}
+
+.announce-text h2 em {
+  color: var(--thread);
+  font-style: italic;
+}
+
+.announce-text p {
+  color: var(--paper-deep);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.announce-meta {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(245, 239, 227, 0.2);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.announce-meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--paper-deep);
+  margin-bottom: 0.4rem;
+}
+
+.announce-meta dd {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--paper);
+  font-variation-settings: "opsz" 24, "SOFT" 50;
+}
+
+/* =========================================================
+   WHY IT MATTERS / IMPACT
+   ========================================================= */
+
+.why {
+  padding: 10rem 0;
+  position: relative;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+@media (max-width: 880px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.why-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.3;
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.why-lead em {
+  font-style: normal;
+  color: var(--accent);
+  border-bottom: 2px solid var(--thread);
+  padding-bottom: 2px;
+}
+
+.why-points {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+@media (max-width: 880px) {
+  .why-points { grid-template-columns: 1fr; }
+}
+
+.why-point {
+  padding: 2.5rem 1.5rem 2.5rem 0;
+  border-right: 1px solid var(--ink-faint);
+}
+
+.why-point:last-child { border-right: none; padding-right: 0; }
+
+@media (max-width: 880px) {
+  .why-point {
+    border-right: none;
+    border-bottom: 1px solid var(--ink-faint);
+    padding-right: 0;
+  }
+  .why-point:last-child { border-bottom: none; }
+}
+
+.why-point-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.why-point h4 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.why-point p {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.bp-quote {
+  margin-top: 6rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.bp-quote-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  line-height: 1.35;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+  max-width: 28ch;
+  margin: 0 auto 2rem;
+  color: var(--ink);
+}
+
+.bp-quote-attr {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.bp-quote-attr::before {
+  content: '— ';
+  color: var(--accent);
+}
+
+/* =========================================================
+   CONNECT / CTA
+   ========================================================= */
+
+.connect {
+  background: var(--accent);
+  color: var(--paper-light);
+  padding: 8rem 0;
+  position: relative;
+}
+
+.connect-inner {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+
+.connect h2 {
+  color: var(--paper-light);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: 2rem;
+}
+
+.connect h2 em {
+  font-style: italic;
+  color: var(--paper);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.connect-lead {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--paper-deep);
+  margin-bottom: 3rem;
+  max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.connect-action {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--paper-light);
+  border: 1px solid var(--paper-deep);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.connect-action:hover {
+  background: var(--paper-light);
+  color: var(--accent);
+  border-color: var(--paper-light);
+}
+
+.connect-action span.arrow {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  background: var(--ink);
+  color: var(--paper-deep);
+  padding: 4rem 0 3rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'><path d='M0 6 Q 5 0, 10 6 T 20 6 T 30 6 T 40 6' stroke='%23B85A3F' stroke-width='1.2' fill='none'/></svg>");
+  background-repeat: repeat-x;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 720px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.footer-mark {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+  color: var(--paper-light);
+  margin-bottom: 1rem;
+}
+
+.footer-mark em {
+  color: var(--thread);
+  font-style: italic;
+}
+
+.footer-blurb {
+  color: var(--paper-deep);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 28rem;
+}
+
+.footer h5 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--thread);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.footer ul {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.footer ul a {
+  color: var(--paper-deep);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  border: none;
+}
+
+.footer ul a:hover {
+  color: var(--paper-light);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(245, 239, 227, 0.15);
+  padding-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-thread {
+  animation: drift 14s ease-in-out infinite;
+}
+
+.hero-thread-2 {
+  animation-duration: 18s;
+  animation-delay: -3s;
+}
+
+.hero > .hero-inner > * {
+  animation: fadeUp 1s ease-out backwards;
+}
+
+.hero-eyebrow { animation-delay: 0.1s; }
+.hero-title   { animation-delay: 0.3s; }
+.hero-tagline { animation-delay: 0.6s; }
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+@media print {
+  body::before, .hero-thread, .nav { display: none; }
+  body { background: white; color: black; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========================================================
+     NAV
+     ======================================================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">
+      Loose Threads <span class="mark-end">Press</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#cycle">The Cycle</a></li>
+      <li><a href="#first-publication">First Book</a></li>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ========================================================
+     TOP BANNER
+     ======================================================== -->
+<div class="top-banner" aria-hidden="true">
+  <img src="images/spread-banner.jpg" alt="">
+</div>
+
+<!-- ========================================================
+     HERO
+     EDIT: change tagline / hero copy here
+     ======================================================== -->
+<section class="hero" id="top">
+  <!-- decorative thread SVGs -->
+  <svg class="hero-thread hero-thread-1" viewBox="0 0 500 200" fill="none" aria-hidden="true">
+    <path d="M 5 100 Q 80 40, 160 90 T 320 100 T 495 80"
+          stroke="#8C2330" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+    <circle cx="495" cy="80" r="3" fill="#8C2330"/>
+  </svg>
+  <svg class="hero-thread hero-thread-2" viewBox="0 0 400 150" fill="none" aria-hidden="true">
+    <path d="M 5 80 Q 100 20, 200 60 T 395 70"
+          stroke="#B85A3F" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.85"/>
+    <circle cx="5" cy="80" r="2.5" fill="#B85A3F"/>
+  </svg>
+
+  <!-- a single ink blot photo, off to one side -->
+  <div class="hero-photo" aria-hidden="true">
+    <img src="images/big-blot.jpg" alt="">
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="stitch"></span>
+      <span class="mono">A small press · Kitchener-Waterloo · Est. 2026</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="word-loose">Loose</span>
+      <span class="word-threads">Threads</span>
+      <span class="word-press">— Press —</span>
+    </h1>
+
+    <p class="hero-tagline">
+      The language arts as a medium for weaving the social fabric of our world.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================
+     MANIFESTO / ABOUT
+     EDIT: organizational voice and origin lives here
+     ======================================================== -->
+<section class="section manifesto" id="manifesto">
+  <div class="container">
+    <div class="manifesto-grid">
+
+      <div class="manifesto-side">
+        <div class="section-label"><span class="label">§ 01 — Manifesto</span></div>
+        <h2>What we<br><em>believe.</em></h2>
+        <blockquote class="pull-quote">
+          We honour the messy, unfinished, and flawed ongoingness of art. Against the perfection of the finely wrought, we value work that holds a place to enter — that the gap invites.
+        </blockquote>
+
+        <figure class="manifesto-image">
+          <img src="images/handwriting-spill.jpg" alt="A notebook page covered in ink spills and red handwriting that reads 'everything exceeds containers'; the photographer's hand casts a soft shadow across the lower half of the page.">
+          <figcaption>From the notebook · everything exceeds containers</figcaption>
+        </figure>
+      </div>
+
+      <div class="manifesto-body">
+        <p>
+          Loose Threads Press is a feminist literary small press in Kitchener-Waterloo, publishing limited-run editions of experimental poetry, fiction, and creative nonfiction. Co-founded by three local artist-scholars — Shana MacDonald, Kiera Obbard, and Adra Raine — we are housed in the Interdisciplinary Feminist Research Lab at the University of Waterloo, and we offer public workshops on writing, editing, and publishing alongside community space for artmaking and exchange.
+        </p>
+        <p>
+          The three of us crossed paths as feminist scholars and artists pushing against the boundaries of form and conventions of literary value. We found a common desire to see work published that speaks to the moment, that centres voices left out of mainstream publishing, and that creates a culture of collaborative inquiry. We looked at each other and realized we could do this ourselves. We buzzed with the realization that we can make the world we want.
+        </p>
+        <p>
+          Our press is a home to literary forms that are uneven, incohesive, strange, menopausal, queer, uncontained. A fountain pen exploded on the page as we took notes; our writing is always interrupted — by children we love, by domestic labour, unwaged, by waged labour, unloved, by news feeds, by anxiety, by illness, by crises personal and global — our messy lives smear across the pulped fibres upon which we document our story in jagged words and inky spills.
+        </p>
+        <p>
+          We believe writing is a trial, as in: to try things out, to let others respond, to learn the meaning through the practice of peers weighing in, talking it out. We approach publication as a way to experiment and receive feedback from an audience beyond one's immediate location — not to enter the annals of literary history. That is not the job of living peoples of the present. The job of living peoples of the present is to learn together through story, song, conversation, gossip, all of which contribute to the continuous shaping of language that shapes us. We connect writers to readers, and empower everyone to think of themselves as both.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     THE CYCLE — what we do
+     EDIT: program structure, stats, and invitations
+     ======================================================== -->
+<section class="section cycle" id="cycle">
+  <div class="container">
+
+    <div class="cycle-intro">
+      <div class="section-label"><span class="label">§ 02 — What we do</span></div>
+      <h2>The <em>cycle.</em></h2>
+      <p>
+        In year one, we are prototyping the structure we believe will make the Press most dynamic: a repeating cycle that moves from workshop to publication to interactive book launch — and then back to workshop, and so on — with monthly reading club meetings centred on the texts we publish or are inspired by.
+      </p>
+    </div>
+
+    <!-- year one stats -->
+    <div class="cycle-stats">
+      <div class="cycle-stat">
+        <span class="cycle-stat-number">04</span>
+        <span class="cycle-stat-label">Publications / yr</span>
+      </div>
+      <div class="cycle-stat">
+        <span class="cycle-stat-number">10</span>
+        <span class="cycle-stat-label">Reading Clubs / yr</span>
+      </div>
+      <div class="cycle-stat">
+        <span class="cycle-stat-number">04</span>
+        <span class="cycle-stat-label">Editing Workshops / yr</span>
+      </div>
+    </div>
+
+    <!-- three cards — workshop / publication / reading club -->
+    <div class="cycle-cards">
+
+      <div class="cycle-card">
+        <span class="cycle-card-num">i. Workshop</span>
+        <h3>Where the book <em>begins.</em></h3>
+        <p>Workshops on zines, autoethnographic prose poetry, manifesto writing, editing for publication. Some at the Press at the Feminist Research Lab on the UW campus, some at pop-up sessions in your local cafe. Crafting supplies, a sewing machine, and knitting needles always on hand. Tired of words? Make a collage.</p>
+      </div>
+
+      <div class="cycle-card">
+        <span class="cycle-card-num">ii. Publication</span>
+        <h3>Limited-run editions, <em>built for exchange.</em></h3>
+        <p>Experimental poetry, fiction, and creative nonfiction in beautifully made limited-run editions. Twenty percent of titles each year are by emerging writers. The single author is the starting point — the first runner in the relay; the manuscript is a baton passed to the next writer.</p>
+      </div>
+
+      <div class="cycle-card">
+        <span class="cycle-card-num">iii. Reading Club</span>
+        <h3>The next set of writers, <em>learning together.</em></h3>
+        <p>With each publication, we host a monthly reading club to cultivate engagement, inviting reader responses in the form of more writing. The reading club is not an audience for the author; it is the next set of writers learning their craft in public.</p>
+      </div>
+
+    </div>
+
+    <!-- invitations callout -->
+    <div class="cycle-invitations">
+      <h3>You're invited.</h3>
+      <ul>
+        <li>Take a workshop on making zines and whatever you make goes in our zine library.</li>
+        <li>Take a workshop on autoethnographic prose poetry and have it published in a Loose Threads anthology.</li>
+        <li>Don't want to make the trip to campus? Find us at a pop-up workshop at your local cafe.</li>
+        <li>Just want to sew a quilt square instead of writing? Help yourself.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================================================
+     FIRST PUBLICATION ANNOUNCEMENT
+     EDIT: book title, byline, launch date, description
+     ======================================================== -->
+<section class="section first-pub" id="first-publication">
+  <div class="container">
+
+    <div class="section-label"><span class="label">§ 03 — Forthcoming · June 2026</span></div>
+
+    <div class="announce-grid">
+
+      <!-- stylized book cover -->
+      <div class="book-cover" aria-label="Stylized cover of Principles for Surviving the Collapse of Capitalism">
+        <div class="book-cover-frame"></div>
+        <div class="book-cover-imprint">Loose Threads Press · No. 01</div>
+        <h3 class="book-cover-title">
+          Principles for Surviving the Collapse of <em>Capitalism</em>
+        </h3>
+        <div class="book-cover-rule"></div>
+        <p class="book-cover-byline">
+          A collaboratively authored book of counter-lessons<br>
+          with collage and illustrations by workshop participants
+        </p>
+        <!-- inked detail strip — collage placeholder for the cover -->
+        <div class="book-cover-photo">
+          <img src="images/spread-blots.jpg" alt="">
+        </div>
+      </div>
+
+      <!-- announcement text -->
+      <div class="announce-text">
+        <h2>Our first <em>book.</em></h2>
+        <p>
+          <strong>Principles for Surviving the Collapse of Capitalism</strong> is a collaboratively authored book that began as a reading group on Timothy Snyder's <em>On Tyranny: Twenty Lessons for the Twentieth Century</em> and grew, over a series of creative writing workshops, into a counter-set of lessons for our current moment — written from a feminist, queer, anti-racist, and disability justice point of view.
+        </p>
+        <p>
+          From the reading group came the workshops; from the workshops came further sessions on writing and revision; and from those sessions, this book. Collage and illustrations created by workshop participants accompany the text and are incorporated into the cover. The process of its making provided the prototype for the cycle the Press now seeks to establish: words made in company, passed between hands, finished in public.
+        </p>
+        <p>
+          We will launch the book in June 2026 with an interactive event that includes zine-making and manifesto writing. You are invited.
+        </p>
+
+        <dl class="announce-meta">
+          <div>
+            <dt>Form</dt>
+            <dd>Collaboratively authored book · perfect-bound softcover</dd>
+          </div>
+          <div>
+            <dt>Launch</dt>
+            <dd>June 2026 · Kitchener-Waterloo</dd>
+          </div>
+          <div>
+            <dt>Edition</dt>
+            <dd>Loose Threads Press № 01</dd>
+          </div>
+          <div>
+            <dt>RSVP</dt>
+            <dd><a href="#connect" style="color:inherit;border-color:rgba(245,239,227,0.4);">Join the mailing list</a></dd>
+          </div>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     WHY IT MATTERS / IMPACT
+     EDIT: regional case, the bpNichol quote
+     ======================================================== -->
+<section class="section why" id="why">
+  <div class="container">
+
+    <div class="section-label"><span class="label">§ 04 — Why a small press, why here</span></div>
+
+    <div class="why-grid">
+      <div>
+        <p class="why-lead">
+          The small press landscape in Kitchener-Waterloo is <em>thin to the point of absence.</em>
+        </p>
+        <p>
+          National presses do vital work, but they cannot be everywhere, and they cannot be here in the way a press rooted in this place can be. Loose Threads Press is meeting a need named by writers, readers, and students across the region: a press that belongs to this community and answers to it.
+        </p>
+      </div>
+
+      <div>
+        <p>
+          We enter the small press tradition of reimagining what a small press can be. We put community and creativity at the centre of the operation. The workshop is not marketing for the book; the workshop is where the book begins. The reading club is not an audience for the author; it is the next set of writers learning their craft together. Our structure insists that making and gathering are inseparable — that writing and reading are as necessary to publication as inhaling and exhaling are to breath.
+        </p>
+        <p>
+          We are launching a feminist small press at a moment when the world is more openly misogynistic than it has been in a generation. We prioritize the voices that the algorithm erases and the voices the current moment tries to silence. We offer paper, ink, glue, and the hands of readers turning pages, as a counter-infrastructure to the engagement metric.
+        </p>
+      </div>
+    </div>
+
+    <!-- three points -->
+    <div class="why-points">
+
+      <div class="why-point">
+        <span class="why-point-num">20%</span>
+        <h4>Emerging writers</h4>
+        <p>Twenty percent of Loose Threads publications each year are by emerging writers. Open calls for our edited anthologies invite work from writers who have never been published alongside writers who have been published widely.</p>
+      </div>
+
+      <div class="why-point">
+        <span class="why-point-num">∞</span>
+        <h4>Free entry, always</h4>
+        <p>Workshops, reading clubs, and book launches are free to attend, by design. Mentorship is intergenerational — for young people just finding their voices, and for those left behind by earlier literary gatekeeping. The door is held open.</p>
+      </div>
+
+      <div class="why-point">
+        <span class="why-point-num">3</span>
+        <h4>Universities, one region</h4>
+        <p>Waterloo, Wilfrid Laurier, and Conestoga graduate hundreds of students each year who study writing, literature, and the book arts with limited opportunity to apprentice in a working small press. We offer that local site.</p>
+      </div>
+
+    </div>
+
+    <!-- bpNichol quote -->
+    <div class="bp-quote">
+      <p class="bp-quote-text">
+        "Supporting small press is supporting literature on the cutting edge. Small press is the guardian of literary culture and free speech."
+      </p>
+      <p class="bp-quote-attr">bpNichol</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================================================
+     CONNECT / CTA
+     EDIT: actual links and contact info when ready
+     ======================================================== -->
+<section class="connect" id="connect">
+  <div class="connect-inner">
+
+    <div class="section-label" style="justify-content:center;color:rgba(245,239,227,0.7);">
+      <span class="label">§ 05 — Stay close</span>
+    </div>
+
+    <h2>Small, rooted, <em>and unruly.</em></h2>
+    <p class="connect-lead">
+      We're launching in summer 2026. Subscribe for workshop announcements, reading club invitations, calls for submissions, and news of forthcoming books. The first one is on its way.
+    </p>
+
+    <div class="connect-actions">
+      <a href="#" class="connect-action">
+        Join the mailing list <span class="arrow">→</span>
+      </a>
+      <a href="#" class="connect-action">
+        Submissions <span class="arrow">→</span>
+      </a>
+      <a href="#" class="connect-action">
+        Contact <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================================================
+     FOOTER
+     ======================================================== -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <p class="footer-mark">Loose <em>Threads</em> Press</p>
+        <p class="footer-blurb">
+          A feminist literary small press in Kitchener-Waterloo, housed in the Interdisciplinary Feminist Research Lab at the University of Waterloo. Limited-run editions, public workshops, monthly reading clubs.
+        </p>
+      </div>
+
+      <div>
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="#manifesto">Manifesto</a></li>
+          <li><a href="#cycle">The Cycle</a></li>
+          <li><a href="#first-publication">First Book</a></li>
+          <li><a href="#why">Why a Small Press</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="#">Mailing list</a></li>
+          <li><a href="#">Submissions</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Workshops calendar</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Loose Threads Press</span>
+      <span>Kitchener-Waterloo · Treaty Territory of the Haudenosaunee, Anishinaabe, and Neutral Peoples</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ========================================================
+     SCRIPT — minimal: scroll reveal + nav state
+     ======================================================== -->
+<script>
+  // Sticky nav border on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  // Scroll-triggered reveal
+  const revealEls = document.querySelectorAll(
+    '.manifesto-side, .manifesto-body, .cycle-intro, .cycle-stat, .cycle-card, .cycle-invitations, .book-cover, .announce-text, .why-grid > div, .why-point, .bp-quote, .connect-inner > *'
+  );
+  revealEls.forEach(el => el.classList.add('reveal'));
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
