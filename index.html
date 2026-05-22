@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loose Threads Press — A small press in Kitchener-Waterloo</title>
-<meta name="description" content="Loose Threads Press is a feminist literary small press based in Kitchener-Waterloo, publishing limited-run editions of experimental poetry, fiction, and creative nonfiction.">
+<meta name="description" content="Loose Threads Press is a new feminist literary small press based in Kitchener-Waterloo, publishing limited-run editions of poetry, fiction, and creative nonfiction.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +25,9 @@
   --ink:          #1C1612;
   --ink-soft:     #5C4F44;
   --ink-faint:    #8B7E6F;
-  --accent:       #8C2330;   /* oxblood — like ink, like thread */
-  --thread:       #B85A3F;   /* warmer thread red */
-  --teal:         #2D4A52;   /* deep teal accent */
+  --accent:       #8C2330;
+  --thread:       #B85A3F;
+  --teal:         #2D4A52;
   --gold:         #A88534;
 
   --font-display: 'Fraunces', Georgia, serif;
@@ -55,7 +55,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Paper grain overlay — subtle texture across whole site */
 body::before {
   content: '';
   position: fixed;
@@ -99,12 +98,8 @@ h3 {
   margin-bottom: 0.75rem;
 }
 
-p {
-  margin-bottom: 1.25rem;
-}
-
+p { margin-bottom: 1.25rem; }
 p + p { text-indent: 0; }
-
 em { font-style: italic; }
 
 a {
@@ -324,7 +319,7 @@ a:hover {
 }
 .hero-title .word-press {
   display: block;
- font-family: var(--font-mono);
+  font-family: var(--font-mono);
   font-size: 0.18em;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -347,7 +342,6 @@ a:hover {
   border-left: 1px solid var(--accent);
 }
 
-/* Floating thread SVGs in hero */
 .hero-thread {
   position: absolute;
   pointer-events: none;
@@ -372,6 +366,35 @@ a:hover {
 
 @media (max-width: 720px) {
   .hero-thread { display: none; }
+}
+
+.hero-photo {
+  position: absolute;
+  top: 52%;
+  left: 28%;
+  width: 180px;
+  max-width: 22%;
+  z-index: 1;
+  transform: rotate(8deg);
+  transition: transform 0.4s ease;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.06),
+    0 10px 30px rgba(28, 22, 18, 0.22);
+  border: 1px solid rgba(28, 22, 18, 0.1);
+}
+
+.hero-photo:hover {
+  transform: rotate(0deg);
+}
+
+@media (max-width: 720px) {
+  .hero-photo { display: none; }
 }
 
 /* =========================================================
@@ -465,15 +488,12 @@ a:hover {
   font-variation-settings: "opsz" 144, "SOFT" 70;
 }
 
-/* Manifesto image — the actual fountain pen on the page, rotated horizontal */
 .manifesto-image {
-  margin-top: 2.5rem;
+  margin: 2.5rem auto;
   position: relative;
   display: block;
   width: 100%;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 480px;
   transform: rotate(-1.2deg);
   transition: transform 0.5s ease;
 }
@@ -503,55 +523,6 @@ a:hover {
   text-align: center;
 }
 
-/* Hero image accent — small framed photo to one side of wordmark */
-.hero-photo {
-  position: absolute;
-  top: 52%;
-  left: 28%;
-  width: 180px;
-  max-width: 22%;
-  z-index: 1;
-  transform: rotate(8deg);
-  transition: transform 0.4s ease;
-}
-
-.hero-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  box-shadow:
-    0 2px 4px rgba(0,0,0,0.06),
-    0 10px 30px rgba(28, 22, 18, 0.22);
-  border: 1px solid rgba(28, 22, 18, 0.1);
-}
-
-.hero-photo:hover {
-  transform: rotate(0deg);
-}
-
-@media (max-width: 720px) {
-  .hero-photo { display: none; }
-}
-
-/* Photo on the book cover — replaces the SVG collage strip */
-.book-cover-photo {
-  position: absolute;
-  inset: auto 1.5rem 12% 1.5rem;
-  height: 80px;
-  overflow: hidden;
-  border: 1px solid rgba(28, 22, 18, 0.15);
-  pointer-events: none;
-}
-
-.book-cover-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  filter: contrast(1.05) saturate(1.05);
-}
-
 /* =========================================================
    THE CYCLE
    ========================================================= */
@@ -573,52 +544,6 @@ a:hover {
 .cycle-intro p {
   font-size: 1.2rem;
   color: var(--ink-soft);
-}
-
-.cycle-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  margin: 4rem 0;
-  border-top: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-}
-
-.cycle-stat {
-  padding: 2rem 1rem;
-  text-align: center;
-  border-right: 1px solid var(--ink-soft);
-}
-
-.cycle-stat:last-child { border-right: none; }
-
-.cycle-stat-number {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5rem);
-  line-height: 1;
-  color: var(--accent);
-  font-variation-settings: "opsz" 144, "SOFT" 30;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.cycle-stat-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-
-@media (max-width: 720px) {
-  .cycle-stats {
-    grid-template-columns: 1fr;
-  }
-  .cycle-stat {
-    border-right: none;
-    border-bottom: 1px solid var(--ink-soft);
-  }
-  .cycle-stat:last-child { border-bottom: none; }
 }
 
 .cycle-cards {
@@ -756,7 +681,6 @@ a:hover {
   }
 }
 
-/* Stylized book cover */
 .book-cover {
   aspect-ratio: 5 / 7;
   background: var(--paper);
@@ -818,20 +742,29 @@ a:hover {
   margin: 1rem 0;
 }
 
+.book-cover-photo {
+  width: 100%;
+  height: 70px;
+  overflow: hidden;
+  border: 1px solid rgba(28, 22, 18, 0.15);
+  margin: 1rem 0;
+}
+
+.book-cover-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.05) saturate(1.05);
+}
+
 .book-cover-byline {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 0.95rem;
   color: var(--ink-soft);
   font-variation-settings: "opsz" 24, "SOFT" 70;
-}
-
-.book-cover-collage {
-  position: absolute;
-  inset: auto 0 35% 0;
-  height: 80px;
-  pointer-events: none;
-  opacity: 0.7;
 }
 
 .announce-text h2 {
@@ -874,6 +807,91 @@ a:hover {
   font-style: italic;
   color: var(--paper);
   font-variation-settings: "opsz" 24, "SOFT" 50;
+}
+
+/* =========================================================
+   TABLE OF CONTENTS TEASER
+   ========================================================= */
+
+.toc-teaser {
+  margin-top: 6rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(245, 239, 227, 0.2);
+}
+
+.toc-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--thread);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.toc-intro,
+.toc-conclusion {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  text-align: center;
+  color: var(--paper);
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+  margin: 2rem 0;
+  letter-spacing: 0.05em;
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 880px) {
+  .toc-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.toc-section h4 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+  color: var(--thread);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(245, 239, 227, 0.2);
+}
+
+.toc-section ol {
+  list-style: none;
+  counter-reset: toc-counter;
+  padding: 0;
+}
+
+.toc-section li {
+  counter-increment: toc-counter;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--paper-deep);
+  margin-bottom: 0.85rem;
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.toc-section li::before {
+  content: counter(toc-counter, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--thread);
+  letter-spacing: 0.1em;
 }
 
 /* =========================================================
@@ -1040,6 +1058,23 @@ a:hover {
   margin-right: auto;
 }
 
+.connect-email {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.connect-email a {
+  color: var(--paper);
+  border-bottom: 1px solid rgba(245, 239, 227, 0.4);
+}
+
+.connect-email a:hover {
+  color: var(--paper-light);
+  border-bottom-color: var(--paper-light);
+}
+
 .connect-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1175,14 +1210,8 @@ a:hover {
    ========================================================= */
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes drift {
@@ -1242,7 +1271,6 @@ a:hover {
       <li><a href="#manifesto">Manifesto</a></li>
       <li><a href="#cycle">The Cycle</a></li>
       <li><a href="#first-publication">First Book</a></li>
-      <li><a href="#why">Why</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
   </div>
@@ -1257,10 +1285,8 @@ a:hover {
 
 <!-- ========================================================
      HERO
-     EDIT: change tagline / hero copy here
      ======================================================== -->
 <section class="hero" id="top">
-  <!-- decorative thread SVGs -->
   <svg class="hero-thread hero-thread-1" viewBox="0 0 500 200" fill="none" aria-hidden="true">
     <path d="M 5 100 Q 80 40, 160 90 T 320 100 T 495 80"
           stroke="#8C2330" stroke-width="1.4" stroke-linecap="round" fill="none"/>
@@ -1272,7 +1298,6 @@ a:hover {
     <circle cx="5" cy="80" r="2.5" fill="#B85A3F"/>
   </svg>
 
-  <!-- a single ink blot photo, off to one side -->
   <div class="hero-photo" aria-hidden="true">
     <img src="images/big-blot.jpg" alt="">
   </div>
@@ -1297,7 +1322,6 @@ a:hover {
 
 <!-- ========================================================
      MANIFESTO / ABOUT
-     EDIT: organizational voice and origin lives here
      ======================================================== -->
 <section class="section manifesto" id="manifesto">
   <div class="container">
@@ -1307,29 +1331,27 @@ a:hover {
         <div class="section-label"><span class="label">§ 01 — Manifesto</span></div>
         <h2>What we<br><em>believe.</em></h2>
         <blockquote class="pull-quote">
-          We honour the messy, unfinished, and flawed ongoingness of art. Against the perfection of the finely wrought, we value work that holds a place to enter — that the gap invites.
+          We honour the messy, unfinished, and flawed ongoingness of art. Against the perfection of the finely wrought, we value work with gaps that hold a place to enter.
         </blockquote>
-         
       </div>
 
       <div class="manifesto-body">
-  <p>Our press is a home to literary forms that are uneven, tentative, playful, incohesive, strange, menopausal, queer, uncontained. A fountain pen exploded on the page as we took notes. Our writing is always interrupted — by children we love, by domestic labour, unwaged, by waged labour, unloved, by news feeds, by anxiety, by illness, by crises personal and global — our messy lives smear across the pulped fibres upon which we document our story in jagged words and inky spills, in what overflows our expressive containers.</p>
+        <p>Our press is a home to literary forms that are uneven, tentative, playful, incohesive, strange, menopausal, queer, uncontained. A fountain pen exploded on the page as we took notes. Our writing is always interrupted — by children we love, by domestic labour, unwaged, by waged labour, unloved, by news feeds, by anxiety, by illness, by crises personal and global — our messy lives smear across the pulped fibres upon which we document our story in jagged words and inky spills, in what overflows our expressive containers.</p>
 
-  <figure class="manifesto-image">
-    <img src="images/handwriting-spill-h.jpg" alt="A notebook page turned on its side, covered in pink and purple ink blooms; sideways red handwriting reads 'everything exceeds containers' across the page.">
-    <figcaption>From the notebook · everything exceeds containers</figcaption>
-  </figure>
+        <figure class="manifesto-image">
+          <img src="images/handwriting-spill-h.jpg" alt="A notebook page turned on its side, covered in pink and purple ink blooms; sideways red handwriting reads 'everything exceeds containers' across the page.">
+          <figcaption>From the notebook · everything exceeds containers</figcaption>
+        </figure>
 
-  <p>We believe the language arts are a medium for weaving the social fabric of our world. We learn together through story, poetry, conversation, gossip — connecting writers to readers, empowering everyone to think of themselves as both.</p>
-</div>
-       
+        <p>We believe the language arts are a medium for weaving the social fabric of our world. We learn together through story, poetry, conversation, gossip — connecting writers to readers, empowering everyone to think of themselves as both.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ========================================================
      THE CYCLE — what we do
-     EDIT: program structure, stats, and invitations
      ======================================================== -->
 <section class="section cycle" id="cycle">
   <div class="container">
@@ -1342,7 +1364,6 @@ a:hover {
       </p>
     </div>
 
-    <!-- three cards — workshop / publication / reading club -->
     <div class="cycle-cards">
 
       <div class="cycle-card">
@@ -1365,7 +1386,6 @@ a:hover {
 
     </div>
 
-    <!-- invitations callout -->
     <div class="cycle-invitations">
       <h3>You're invited.</h3>
       <ul>
@@ -1381,7 +1401,6 @@ a:hover {
 
 <!-- ========================================================
      FIRST PUBLICATION ANNOUNCEMENT
-     EDIT: book title, byline, launch date, description
      ======================================================== -->
 <section class="section first-pub" id="first-publication">
   <div class="container">
@@ -1398,24 +1417,23 @@ a:hover {
           Principles for Surviving the Collapse of <em>Capitalism</em>
         </h3>
         <div class="book-cover-rule"></div>
-        <p class="book-cover-byline">
-          A collaboratively authored book of counter-lessons<br>
-        </p>
-        <!-- inked detail strip — collage placeholder for the cover -->
         <div class="book-cover-photo">
           <img src="images/spread-blots.jpg" alt="">
         </div>
+        <p class="book-cover-byline">
+          A collaboratively authored book of counter-lessons
+        </p>
       </div>
 
       <!-- announcement text -->
       <div class="announce-text">
         <h2>Our first <em>book.</em></h2>
-<p>
-  <strong>Principles for Surviving the Collapse of Capitalism</strong> is a collaboratively authored book that began as a reading group on Timothy Snyder's <em>On Tyranny: Twenty Lessons for the Twentieth Century</em> and grew, over a series of creative writing workshops, into a counter-set of lessons for our current moment — written from a feminist, queer, anti-racist, and disability justice point of view.
-</p>
-<p>
-  We will launch the book in July 2026 with an interactive event at Inter Arts Matrix in Kitchener. You are invited.
-</p>
+        <p>
+          <strong>Principles for Surviving the Collapse of Capitalism</strong> is a collaboratively authored book that began as a reading group on Timothy Snyder's <em>On Tyranny: Twenty Lessons for the Twentieth Century</em> and grew, over a series of creative writing workshops, into a counter-set of lessons for our current moment — written from a feminist, queer, anti-racist, and disability justice point of view.
+        </p>
+        <p>
+          We will launch the book in July 2026 with an interactive event at Inter Arts Matrix in Kitchener. You are invited.
+        </p>
 
         <dl class="announce-meta">
           <div>
@@ -1424,7 +1442,7 @@ a:hover {
           </div>
           <div>
             <dt>Launch</dt>
-            <dd>July 2026 · Kitchener-Waterloo</dd>
+            <dd>July 2026 · Inter Arts Matrix, Kitchener</dd>
           </div>
           <div>
             <dt>Edition</dt>
@@ -1432,73 +1450,63 @@ a:hover {
           </div>
           <div>
             <dt>RSVP</dt>
-            <dd><a href="#connect" style="color:inherit;border-color:rgba(245,239,227,0.4);">Join the mailing list</a></dd>
+            <dd><a href="mailto:loosethreadspress@gmail.com?subject=July%202026%20launch%20%E2%80%94%20RSVP" style="color:inherit;border-color:rgba(245,239,227,0.4);">Join the mailing list</a></dd>
           </div>
         </dl>
       </div>
 
     </div>
-  </div>
-</section>
 
-<!-- ========================================================
-     WHY IT MATTERS / IMPACT
-     EDIT: regional case, the bpNichol quote
-     ======================================================== -->
-<section class="section why" id="why">
-  <div class="container">
+    <!-- Table of Contents teaser -->
+    <div class="toc-teaser">
+      <div class="toc-label">Table of Contents</div>
 
-    <div class="section-label"><span class="label">§ 04 — Why a small press, why here</span></div>
+      <div class="toc-intro">Introduction</div>
 
-    <div class="why-grid">
-      <div>
-        <p class="why-lead">
-          The small press landscape in Kitchener-Waterloo is <em>thin to the point of absence.</em>
-        </p>
-        <p>
-          National presses do vital work, but they cannot be everywhere, and they cannot be here in the way a press rooted in this place can be. Loose Threads Press is meeting a need named by writers, readers, and students across the region: a press that belongs to this community and answers to it.
-        </p>
+      <div class="toc-grid">
+
+        <div class="toc-section">
+          <h4>I. Survival</h4>
+          <ol>
+            <li>Get Off the Algorithm</li>
+            <li>Learn the Symbols and Language of Embattled-Discourse</li>
+            <li>Break Bread with Found Family</li>
+            <li>Don't Let Them Make You Hate Your Humanity</li>
+            <li>Disidentify with Institutions in Order to Exist Within Them</li>
+            <li>Grieve — Feel Your Shit</li>
+            <li>Collaboration First — Reject Transactional Relationships to People and Knowledge</li>
+          </ol>
+        </div>
+
+        <div class="toc-section">
+          <h4>II. Resistance</h4>
+          <ol>
+            <li>Question Everything</li>
+            <li>Know the Historical Context that Informs Your Action</li>
+            <li>Aesthetic Absurdness and Whimsy-Maxxing</li>
+            <li>Meet the Moveable Middle</li>
+            <li>Go to the Front if You Have the Privilege To Do So</li>
+            <li>No Collective 'We' Based on Universal Sameness</li>
+            <li>Give and Take Time to Rest</li>
+          </ol>
+        </div>
+
+        <div class="toc-section">
+          <h4>III. Transformation</h4>
+          <ol>
+            <li>Know That You Don't Know</li>
+            <li>Listen</li>
+            <li>Build Community at the Speed of Trust</li>
+            <li>Always Consider the More-Than-Human</li>
+            <li>Lead and Build Through Care</li>
+            <li>Localize Technology with Prosocial Design</li>
+            <li>Ask, What If?</li>
+          </ol>
+        </div>
+
       </div>
 
-      <div>
-        <p>
-          We enter the small press tradition of reimagining what a small press can be. We put community and creativity at the centre of the operation. The workshop is not marketing for the book; the workshop is where the book begins. The reading club is not an audience for the author; it is the next set of writers learning their craft together. Our structure insists that making and gathering are inseparable — that writing and reading are as necessary to publication as inhaling and exhaling are to breath.
-        </p>
-        <p>
-          We are launching a feminist small press at a moment when the world is more openly misogynistic than it has been in a generation. We prioritize the voices that the algorithm erases and the voices the current moment tries to silence. We offer paper, ink, glue, and the hands of readers turning pages, as a counter-infrastructure to the engagement metric.
-        </p>
-      </div>
-    </div>
-
-    <!-- three points -->
-    <div class="why-points">
-
-      <div class="why-point">
-        <span class="why-point-num">20%</span>
-        <h4>Emerging writers</h4>
-        <p>Twenty percent of Loose Threads publications each year are by emerging writers. Open calls for our edited anthologies invite work from writers who have never been published alongside writers who have been published widely.</p>
-      </div>
-
-      <div class="why-point">
-        <span class="why-point-num">∞</span>
-        <h4>Free entry, always</h4>
-        <p>Workshops, reading clubs, and book launches are free to attend, by design. Mentorship is intergenerational — for young people just finding their voices, and for those left behind by earlier literary gatekeeping. The door is held open.</p>
-      </div>
-
-      <div class="why-point">
-        <span class="why-point-num">3</span>
-        <h4>Universities, one region</h4>
-        <p>Waterloo, Wilfrid Laurier, and Conestoga graduate hundreds of students each year who study writing, literature, and the book arts with limited opportunity to apprentice in a working small press. We offer that local site.</p>
-      </div>
-
-    </div>
-
-    <!-- bpNichol quote -->
-    <div class="bp-quote">
-      <p class="bp-quote-text">
-        "Supporting small press is supporting literature on the cutting edge. Small press is the guardian of literary culture and free speech."
-      </p>
-      <p class="bp-quote-attr">bpNichol</p>
+      <div class="toc-conclusion">Conclusion</div>
     </div>
 
   </div>
@@ -1506,13 +1514,12 @@ a:hover {
 
 <!-- ========================================================
      CONNECT / CTA
-     EDIT: actual links and contact info when ready
      ======================================================== -->
 <section class="connect" id="connect">
   <div class="connect-inner">
 
     <div class="section-label" style="justify-content:center;color:rgba(245,239,227,0.7);">
-      <span class="label">§ 05 — Stay close</span>
+      <span class="label">§ 04 — Stay close</span>
     </div>
 
     <h2>Small, rooted, <em>and unruly.</em></h2>
@@ -1520,14 +1527,18 @@ a:hover {
       We're launching in summer 2026. Subscribe for workshop announcements, reading club invitations, calls for submissions, and news of forthcoming books. The first one is on its way.
     </p>
 
+    <p class="connect-email">
+      <a href="mailto:loosethreadspress@gmail.com">loosethreadspress@gmail.com</a>
+    </p>
+
     <div class="connect-actions">
-      <a href="#" class="connect-action">
+      <a href="mailto:loosethreadspress@gmail.com?subject=Mailing%20list" class="connect-action">
         Join the mailing list <span class="arrow">→</span>
       </a>
-      <a href="#" class="connect-action">
+      <a href="mailto:loosethreadspress@gmail.com?subject=Submissions" class="connect-action">
         Submissions <span class="arrow">→</span>
       </a>
-      <a href="#" class="connect-action">
+      <a href="mailto:loosethreadspress@gmail.com" class="connect-action">
         Contact <span class="arrow">→</span>
       </a>
     </div>
@@ -1546,7 +1557,7 @@ a:hover {
       <div>
         <p class="footer-mark">Loose <em>Threads</em> Press</p>
         <p class="footer-blurb">
-          A feminist literary small press in Kitchener-Waterloo, housed in the Interdisciplinary Feminist Research Lab at the University of Waterloo. Limited-run editions, public workshops, monthly reading clubs.
+          A feminist literary small press in Kitchener-Waterloo. Limited-run editions, public workshops, reading clubs, and launches.
         </p>
       </div>
 
@@ -1556,17 +1567,15 @@ a:hover {
           <li><a href="#manifesto">Manifesto</a></li>
           <li><a href="#cycle">The Cycle</a></li>
           <li><a href="#first-publication">First Book</a></li>
-          <li><a href="#why">Why a Small Press</a></li>
         </ul>
       </div>
 
       <div>
         <h5>Connect</h5>
         <ul>
-          <li><a href="#">Mailing list</a></li>
-          <li><a href="#">Submissions</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Workshops calendar</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com?subject=Mailing%20list">Mailing list</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com?subject=Submissions">Submissions</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com">loosethreadspress@gmail.com</a></li>
         </ul>
       </div>
 
@@ -1580,20 +1589,15 @@ a:hover {
   </div>
 </footer>
 
-<!-- ========================================================
-     SCRIPT — minimal: scroll reveal + nav state
-     ======================================================== -->
 <script>
-  // Sticky nav border on scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 20) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
 
-  // Scroll-triggered reveal
   const revealEls = document.querySelectorAll(
-    '.manifesto-side, .manifesto-body, .cycle-intro, .cycle-stat, .cycle-card, .cycle-invitations, .book-cover, .announce-text, .why-grid > div, .why-point, .bp-quote, .connect-inner > *'
+    '.manifesto-side, .manifesto-body, .cycle-intro, .cycle-card, .cycle-invitations, .book-cover, .announce-text, .toc-teaser, .why-grid > div, .why-point, .bp-quote, .connect-inner > *'
   );
   revealEls.forEach(el => el.classList.add('reveal'));
 
