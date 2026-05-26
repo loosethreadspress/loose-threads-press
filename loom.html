@@ -1,0 +1,35 @@
+# =========================================================
+# Loose Threads Press — Jekyll configuration
+# =========================================================
+
+title: Loose Threads Press
+description: A new feminist literary small press in Kitchener-Waterloo.
+url: "https://loosethreadspress.github.io"
+baseurl: "/loose-threads-press"
+
+# Markdown processor settings
+markdown: kramdown
+kramdown:
+  smart_quotes: ["lsquo", "rsquo", "ldquo", "rdquo"]
+  syntax_highlighter: rouge
+
+# Permalink structure: all posts live under /loom/
+permalink: /loom/:title/
+
+# Default front matter applied to all posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "piece"
+
+# Exclude these from the build
+exclude:
+  - README.md
+  - .gitignore
+  - .github
+
+# Where to find / output things
+source: .
+destination: ./_site
