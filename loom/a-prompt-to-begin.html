@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A prompt to begin · The Loom · Loose Threads Press</title>
+<meta name="description" content="Consider the word Unfinished. A writing prompt from The Loom.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:        #FAF6EE;
+  --paper-light:  #FFFCF7;
+  --paper-deep:   #E8E2D4;
+  --ink:          #1C1612;
+  --ink-soft:     #5C4F44;
+  --ink-faint:    #8B7E6F;
+  --accent:       #D8392A;
+  --thread:       #7A3FB8;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'EB Garamond', Georgia, serif;
+  --font-mono:    'Courier Prime', 'Courier New', monospace;
+  --max-w:        1140px;
+  --reading-w:    38rem;
+  --gutter:       2rem;
+}
+
+html { font-size: 18px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><g stroke='%235C4F44' stroke-width='0.5' fill='none' opacity='0.16'><line x1='5' y1='0' x2='5' y2='100'/><line x1='10' y1='0' x2='10' y2='100'/><line x1='15' y1='0' x2='15' y2='100'/><line x1='20' y1='0' x2='20' y2='100'/><line x1='25' y1='0' x2='25' y2='100'/><line x1='30' y1='0' x2='30' y2='100'/><line x1='35' y1='0' x2='35' y2='100'/><line x1='40' y1='0' x2='40' y2='100'/><line x1='45' y1='0' x2='45' y2='100'/><line x1='50' y1='0' x2='50' y2='100'/><line x1='55' y1='0' x2='55' y2='100'/><line x1='60' y1='0' x2='60' y2='100'/><line x1='65' y1='0' x2='65' y2='100'/><line x1='70' y1='0' x2='70' y2='100'/><line x1='75' y1='0' x2='75' y2='100'/><line x1='80' y1='0' x2='80' y2='100'/><line x1='85' y1='0' x2='85' y2='100'/><line x1='90' y1='0' x2='90' y2='100'/><line x1='95' y1='0' x2='95' y2='100'/></g><g stroke='%235C4F44' stroke-width='0.6' fill='none' opacity='0.22'><line x1='25' y1='0' x2='25' y2='100'/><line x1='75' y1='0' x2='75' y2='100'/></g><g stroke='%23D8392A' stroke-width='0.4' fill='none' opacity='0.18'><line x1='12' y1='30' x2='18' y2='30'/><line x1='32' y1='70' x2='38' y2='70'/><line x1='52' y1='15' x2='58' y2='15'/><line x1='72' y1='55' x2='92' y2='55'/><line x1='42' y1='85' x2='62' y2='85'/></g></svg>");
+  background-repeat: repeat;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: 0.35; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.13  0 0 0 0 0.08  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.05; font-variation-settings: "opsz" 144, "SOFT" 30; letter-spacing: -0.01em; }
+p { margin-bottom: 1.25rem; }
+em { font-style: italic; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; transition: color 0.2s, border-color 0.2s; }
+a:hover { color: var(--thread); border-bottom-color: var(--thread); }
+::selection { background: var(--accent); color: var(--paper-light); }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(239, 232, 218, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+.nav.scrolled { border-bottom-color: var(--paper-deep); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 1.25rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.nav-mark { font-family: var(--font-display); font-size: 1.25rem; font-style: italic; font-variation-settings: "opsz" 24, "SOFT" 50; color: var(--ink); border: none; letter-spacing: 0.02em; }
+.nav-mark::after { content: '·'; margin: 0 0.5rem; color: var(--accent); }
+.nav-mark .mark-end { font-style: normal; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); border: none; }
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.current { color: var(--accent); border-bottom: 1px solid currentColor; }
+@media (max-width: 720px) { .nav-links { display: none; } }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* PIECE */
+.piece { padding: 4rem 0 2rem; }
+.piece-back { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); border: none; display: inline-block; margin-bottom: 4rem; }
+.piece-back::before { content: '← '; color: var(--accent); }
+.piece-back:hover { color: var(--accent); }
+
+.piece-header { max-width: var(--reading-w); margin: 0 auto 4rem; text-align: left; }
+.piece-section-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--thread); border: 1px solid var(--thread); padding: 0.3rem 0.7rem; margin-bottom: 2rem; }
+.piece-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5.5vw, 4.25rem); line-height: 1.05; font-variation-settings: "opsz" 144, "SOFT" 30; letter-spacing: -0.02em; margin-bottom: 1.5rem; color: var(--ink); }
+.piece-title em { font-style: italic; color: var(--accent); font-variation-settings: "opsz" 144, "SOFT" 100; }
+.piece-byline { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--ink-soft); font-variation-settings: "opsz" 60, "SOFT" 70; margin-bottom: 0.75rem; }
+.piece-byline .by { font-family: var(--font-mono); font-style: normal; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-right: 0.6rem; }
+.piece-date { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); }
+
+.piece-content { max-width: var(--reading-w); margin: 0 auto; }
+.piece-content p { font-size: 1.15rem; line-height: 1.75; margin-bottom: 1.5rem; color: var(--ink); }
+.piece-content p:first-of-type::first-letter { font-family: var(--font-display); float: left; font-size: 4.5rem; line-height: 0.85; padding-right: 0.6rem; padding-top: 0.5rem; color: var(--accent); font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 70; }
+.piece-content h2 { font-family: var(--font-display); font-size: 2rem; font-variation-settings: "opsz" 60, "SOFT" 50; margin-top: 3rem; margin-bottom: 1rem; color: var(--ink); }
+.piece-content h3 { font-family: var(--font-display); font-size: 1.4rem; font-style: italic; font-variation-settings: "opsz" 60, "SOFT" 70; margin-top: 2.5rem; margin-bottom: 0.75rem; color: var(--ink); }
+.piece-content blockquote { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; line-height: 1.5; font-variation-settings: "opsz" 60, "SOFT" 80; color: var(--ink-soft); padding-left: 2rem; border-left: 2px solid var(--accent); margin: 2.5rem 0; }
+.piece-content ul, .piece-content ol { margin: 1.25rem 0 1.25rem 2rem; }
+.piece-content li { font-size: 1.15rem; line-height: 1.7; margin-bottom: 0.5rem; }
+.piece-content hr { border: none; height: 8px; margin: 4rem 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'><path d='M0 4 L8 4 M12 4 L20 4 M24 4 L32 4 M36 4 L40 4' stroke='%231C1612' stroke-width='1' fill='none' opacity='0.3'/></svg>");
+  background-repeat: repeat-x; background-position: center; }
+
+.piece-footer { max-width: var(--reading-w); margin: 5rem auto 0; padding-top: 3rem; border-top: 1px solid var(--paper-deep); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
+.piece-footer a { border: none; color: var(--accent); }
+.piece-footer a:hover { color: var(--ink); }
+
+/* FOOTER */
+.footer { background: var(--ink); color: var(--paper-deep); padding: 4rem 0 3rem; position: relative; margin-top: 4rem; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'><path d='M0 6 Q 5 0, 10 6 T 20 6 T 30 6 T 40 6' stroke='%237A3FB8' stroke-width='1.2' fill='none'/></svg>");
+  background-repeat: repeat-x;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+@media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-mark { font-family: var(--font-display); font-size: 1.75rem; font-style: italic; font-variation-settings: "opsz" 60, "SOFT" 80; color: var(--paper-light); margin-bottom: 1rem; }
+.footer-mark em { color: var(--thread); font-style: italic; }
+.footer-blurb { color: var(--paper-deep); font-size: 0.95rem; line-height: 1.55; max-width: 28rem; }
+.footer h5 { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--thread); margin-bottom: 1rem; font-weight: 400; }
+.footer ul { list-style: none; display: grid; gap: 0.5rem; }
+.footer ul a { color: var(--paper-deep); font-size: 0.95rem; font-family: var(--font-body); border: none; }
+.footer ul a:hover { color: var(--paper-light); }
+.footer-bottom { border-top: 1px solid rgba(245, 239, 227, 0.15); padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<!-- NAV (note: links go up one level because this page is in /loom/) -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-mark">
+      Loose Threads <span class="mark-end">Press</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html#manifesto">Manifesto</a></li>
+      <li><a href="../index.html#cycle">The Cycle</a></li>
+      <li><a href="../index.html#first-publication">First Book</a></li>
+      <li><a href="../loom.html" class="current">The Loom</a></li>
+      <li><a href="../index.html#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!--
+  =====================================================
+  THIS IS A LOOM PIECE
+  To edit: change the title, byline, date, and body below.
+  To create a new piece: copy this whole file, rename it,
+  edit the parts marked HERE, and add an entry to loom.html.
+  =====================================================
+-->
+
+<article class="piece">
+  <div class="container">
+
+    <a href="../loom.html" class="piece-back">The Loom</a>
+
+    <header class="piece-header">
+      <!-- SECTION TAG (HERE) -->
+      <span class="piece-section-tag">Prompt</span>
+
+      <!-- TITLE (HERE) -->
+      <h1 class="piece-title">A prompt to begin</h1>
+
+      <!-- BYLINE (HERE) — for one author, just put their name; for several, separate with " &amp; " or commas -->
+      <p class="piece-byline"><span class="by">By</span>The Co-Editors</p>
+
+      <!-- DATE (HERE) -->
+      <p class="piece-date">May 25, 2026</p>
+    </header>
+
+    <!-- BODY (HERE) — write paragraphs between <p>...</p> tags. -->
+    <div class="piece-content">
+
+      <p>An opening prompt for anyone who wants to write alongside us on the loom.</p>
+
+      <blockquote>
+        Consider the word <em>Unfinished.</em> What does it mean to you?
+      </blockquote>
+
+      <p>Start with a blank page, whether writing by hand or on a computer. Set a timer for ten minutes. Write continuously for the full ten minutes. Don't take your pen off the page, your fingers off the keyboard. Let the writing go wherever it goes. Don't worry about whether you are following the prompt. Don't worry about weaving a coherent thread. Let your hands speed ahead of your mind. If you get tired, write about that. Writing about not knowing what to write. The key thing is to keep writing.</p>
+
+      <p>If you want to send us what you have written, we are happy to read it.</p>
+
+      <p>Occasionally, prompts will be followed by responses. Let us know if you'd like your writing to be included.</p>
+
+      <p>Otherwise, take this thread to your own loom, or throw it in the wind. We hope you've enjoyed the exercise.</p>
+
+    </div>
+
+    <footer class="piece-footer">
+      <a href="../loom.html">← Back to The Loom</a>
+      <span>Loose Threads Press</span>
+    </footer>
+
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <p class="footer-mark">Loose <em>Threads</em> Press</p>
+        <p class="footer-blurb">
+          A feminist literary small press in Kitchener-Waterloo. Limited-run editions, public workshops, reading clubs, and launches.
+        </p>
+      </div>
+
+      <div>
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="../index.html#manifesto">Manifesto</a></li>
+          <li><a href="../index.html#cycle">The Cycle</a></li>
+          <li><a href="../index.html#first-publication">First Book</a></li>
+          <li><a href="../loom.html">The Loom</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:loosethreadspress@gmail.com?subject=Mailing%20list">Mailing list</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com?subject=Submissions">Submissions</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com">loosethreadspress@gmail.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Loose Threads Press</span>
+      <span>Kitchener-Waterloo · Treaty Territory of the Haudenosaunee, Anishinaabe, and Neutral Peoples</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+</script>
+
+</body>
+</html>
