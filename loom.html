@@ -1,35 +1,260 @@
-# =========================================================
-# Loose Threads Press — Jekyll configuration
-# =========================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Loom · Loose Threads Press</title>
+<meta name="description" content="The Loom — a writing space from the co-editors of Loose Threads Press.">
 
-title: Loose Threads Press
-description: A new feminist literary small press in Kitchener-Waterloo.
-url: "https://loosethreadspress.github.io"
-baseurl: "/loose-threads-press"
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-# Markdown processor settings
-markdown: kramdown
-kramdown:
-  smart_quotes: ["lsquo", "rsquo", "ldquo", "rdquo"]
-  syntax_highlighter: rouge
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-# Permalink structure: all posts live under /loom/
-permalink: /loom/:title/
+:root {
+  --paper:        #FAF6EE;
+  --paper-light:  #FFFCF7;
+  --paper-deep:   #E8E2D4;
+  --ink:          #1C1612;
+  --ink-soft:     #5C4F44;
+  --ink-faint:    #8B7E6F;
+  --accent:       #D8392A;
+  --thread:       #7A3FB8;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'EB Garamond', Georgia, serif;
+  --font-mono:    'Courier Prime', 'Courier New', monospace;
+  --max-w:        1140px;
+  --gutter:       2rem;
+}
 
-# Default front matter applied to all posts
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "piece"
+html { font-size: 18px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  background-color: var(--paper);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><g stroke='%235C4F44' stroke-width='0.5' fill='none' opacity='0.16'><line x1='5' y1='0' x2='5' y2='100'/><line x1='10' y1='0' x2='10' y2='100'/><line x1='15' y1='0' x2='15' y2='100'/><line x1='20' y1='0' x2='20' y2='100'/><line x1='25' y1='0' x2='25' y2='100'/><line x1='30' y1='0' x2='30' y2='100'/><line x1='35' y1='0' x2='35' y2='100'/><line x1='40' y1='0' x2='40' y2='100'/><line x1='45' y1='0' x2='45' y2='100'/><line x1='50' y1='0' x2='50' y2='100'/><line x1='55' y1='0' x2='55' y2='100'/><line x1='60' y1='0' x2='60' y2='100'/><line x1='65' y1='0' x2='65' y2='100'/><line x1='70' y1='0' x2='70' y2='100'/><line x1='75' y1='0' x2='75' y2='100'/><line x1='80' y1='0' x2='80' y2='100'/><line x1='85' y1='0' x2='85' y2='100'/><line x1='90' y1='0' x2='90' y2='100'/><line x1='95' y1='0' x2='95' y2='100'/></g><g stroke='%235C4F44' stroke-width='0.6' fill='none' opacity='0.22'><line x1='25' y1='0' x2='25' y2='100'/><line x1='75' y1='0' x2='75' y2='100'/></g><g stroke='%23D8392A' stroke-width='0.4' fill='none' opacity='0.18'><line x1='12' y1='30' x2='18' y2='30'/><line x1='32' y1='70' x2='38' y2='70'/><line x1='52' y1='15' x2='58' y2='15'/><line x1='72' y1='55' x2='92' y2='55'/><line x1='42' y1='85' x2='62' y2='85'/></g></svg>");
+  background-repeat: repeat;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  position: relative;
+  overflow-x: hidden;
+}
 
-# Exclude these from the build
-exclude:
-  - README.md
-  - .gitignore
-  - .github
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: 0.35; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.20  0 0 0 0 0.13  0 0 0 0 0.08  0 0 0 0.15 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
 
-# Where to find / output things
-source: .
-destination: ./_site
+h1, h2 { font-family: var(--font-display); font-weight: 400; line-height: 1.05; font-variation-settings: "opsz" 144, "SOFT" 30; letter-spacing: -0.01em; }
+p { margin-bottom: 1.25rem; }
+em { font-style: italic; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; transition: color 0.2s, border-color 0.2s; }
+a:hover { color: var(--thread); border-bottom-color: var(--thread); }
+::selection { background: var(--accent); color: var(--paper-light); }
+
+.label, .mono { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; }
+
+/* NAV */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(239, 232, 218, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+.nav.scrolled { border-bottom-color: var(--paper-deep); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 1.25rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.nav-mark { font-family: var(--font-display); font-size: 1.25rem; font-style: italic; font-variation-settings: "opsz" 24, "SOFT" 50; color: var(--ink); border: none; letter-spacing: 0.02em; }
+.nav-mark::after { content: '·'; margin: 0 0.5rem; color: var(--accent); }
+.nav-mark .mark-end { font-style: normal; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); border: none; }
+.nav-links a:hover { color: var(--accent); }
+.nav-links a.current { color: var(--accent); border-bottom: 1px solid currentColor; }
+@media (max-width: 720px) { .nav-links { display: none; } }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* HERO */
+.loom-hero { padding: 6rem 0 4rem; position: relative; }
+.loom-hero-eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+.loom-hero-eyebrow::before { content: ''; display: inline-block; width: 2.5rem; height: 1px; background: var(--accent); }
+.loom-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); line-height: 0.95; font-variation-settings: "opsz" 144, "SOFT" 30; letter-spacing: -0.025em; margin-bottom: 2rem; }
+.loom-hero h1 em { font-style: italic; color: var(--accent); font-variation-settings: "opsz" 144, "SOFT" 100; }
+.loom-hero .lede { font-family: var(--font-display); font-style: italic; font-variation-settings: "opsz" 60, "SOFT" 70; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.45; max-width: 38rem; color: var(--ink-soft); padding-left: 2rem; border-left: 1px solid var(--accent); margin-bottom: 1rem; }
+
+/* FEED */
+.loom-feed { padding: 4rem 0 6rem; }
+.loom-feed-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+.loom-feed-label::before { content: ''; display: inline-block; width: 2.5rem; height: 1px; background: var(--accent); }
+
+.stitched-divider {
+  width: 100%; height: 8px; margin: 3rem 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'><path d='M0 4 L8 4 M12 4 L20 4 M24 4 L32 4 M36 4 L40 4' stroke='%231C1612' stroke-width='1' fill='none' opacity='0.3'/></svg>");
+  background-repeat: repeat-x; background-position: center;
+}
+
+.loom-entry { display: grid; grid-template-columns: 1fr 2.4fr; gap: 3rem; align-items: start; padding: 1rem 0; }
+@media (max-width: 720px) { .loom-entry { grid-template-columns: 1fr; gap: 1rem; } }
+
+.loom-entry-meta { padding-top: 0.4rem; }
+.loom-entry-date { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.75rem; }
+.loom-entry-section { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--thread); border: 1px solid var(--thread); padding: 0.25rem 0.6rem; }
+
+.loom-entry-body h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.5vw, 2.1rem); line-height: 1.15; font-variation-settings: "opsz" 60, "SOFT" 60; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+.loom-entry-body h2 a { color: var(--ink); border-bottom: none; }
+.loom-entry-body h2 a:hover { color: var(--accent); }
+.loom-entry-byline { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--ink-soft); margin-bottom: 1rem; font-variation-settings: "opsz" 24, "SOFT" 70; }
+.loom-entry-byline .by { font-family: var(--font-mono); font-style: normal; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-right: 0.6rem; }
+.loom-entry-excerpt { font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); max-width: 36rem; }
+.loom-entry-readmore { display: inline-block; margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: none; }
+.loom-entry-readmore::after { content: ' →'; }
+
+/* FOOTER */
+.footer { background: var(--ink); color: var(--paper-deep); padding: 4rem 0 3rem; position: relative; margin-top: 4rem; }
+.footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'><path d='M0 6 Q 5 0, 10 6 T 20 6 T 30 6 T 40 6' stroke='%237A3FB8' stroke-width='1.2' fill='none'/></svg>");
+  background-repeat: repeat-x;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+@media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-mark { font-family: var(--font-display); font-size: 1.75rem; font-style: italic; font-variation-settings: "opsz" 60, "SOFT" 80; color: var(--paper-light); margin-bottom: 1rem; }
+.footer-mark em { color: var(--thread); font-style: italic; }
+.footer-blurb { color: var(--paper-deep); font-size: 0.95rem; line-height: 1.55; max-width: 28rem; }
+.footer h5 { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--thread); margin-bottom: 1rem; font-weight: 400; }
+.footer ul { list-style: none; display: grid; gap: 0.5rem; }
+.footer ul a { color: var(--paper-deep); font-size: 0.95rem; font-family: var(--font-body); border: none; }
+.footer ul a:hover { color: var(--paper-light); }
+.footer-bottom { border-top: 1px solid rgba(245, 239, 227, 0.15); padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-mark">
+      Loose Threads <span class="mark-end">Press</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#manifesto">Manifesto</a></li>
+      <li><a href="index.html#cycle">The Cycle</a></li>
+      <li><a href="index.html#first-publication">First Book</a></li>
+      <li><a href="loom.html" class="current">The Loom</a></li>
+      <li><a href="index.html#connect">Connect</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="loom-hero">
+  <div class="container">
+    <div class="loom-hero-eyebrow">From the co-editors</div>
+    <h1>The <em>Loom.</em></h1>
+    <p class="lede">
+      A space for the co-editors of Loose Threads Press, and guests, to write with one another. Voices, conversations, prompts, notes from the workshop.
+    </p>
+  </div>
+</section>
+
+<!-- FEED -->
+<!--
+  =====================================================
+  TO ADD A NEW PIECE TO THE LOOM:
+  Copy one of the <article class="loom-entry"> blocks below
+  and paste it ABOVE the others (newest first). Update:
+    - the date inside .loom-entry-date
+    - the section tag in .loom-entry-section
+    - the title and the href link
+    - the byline
+    - the excerpt
+  Then create the actual piece file inside the loom/ folder.
+  =====================================================
+-->
+<section class="loom-feed">
+  <div class="container">
+
+    <div class="loom-feed-label">Recent threads</div>
+
+    <article class="loom-entry">
+      <div class="loom-entry-meta">
+        <p class="loom-entry-date">May 25, 2026</p>
+        <span class="loom-entry-section">Editor's Note</span>
+      </div>
+      <div class="loom-entry-body">
+        <h2><a href="loom/on-opening-the-loom.html">On opening The Loom</a></h2>
+        <p class="loom-entry-byline"><span class="by">By</span>The Co-Editors</p>
+        <p class="loom-entry-excerpt">A loom is a tool, not a product. It's the apparatus on which work gets made. The threads coming off it can be anything — a piece by one editor, a conversation between two, a workshop document, a guest reflection, an opening question.</p>
+        <a href="loom/on-opening-the-loom.html" class="loom-entry-readmore">Read</a>
+      </div>
+    </article>
+
+    <div class="stitched-divider"></div>
+
+    <article class="loom-entry">
+      <div class="loom-entry-meta">
+        <p class="loom-entry-date">May 25, 2026</p>
+        <span class="loom-entry-section">Prompt</span>
+      </div>
+      <div class="loom-entry-body">
+        <h2><a href="loom/a-prompt-to-begin.html">A prompt to begin</a></h2>
+        <p class="loom-entry-byline"><span class="by">By</span>The Co-Editors</p>
+        <p class="loom-entry-excerpt">An opening prompt for ourselves and for anyone who wants to write alongside us. Take ten minutes. Don't reach for a finished thought.</p>
+        <a href="loom/a-prompt-to-begin.html" class="loom-entry-readmore">Read</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <p class="footer-mark">Loose <em>Threads</em> Press</p>
+        <p class="footer-blurb">
+          A feminist literary small press in Kitchener-Waterloo. Limited-run editions, public workshops, reading clubs, and launches.
+        </p>
+      </div>
+
+      <div>
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="index.html#manifesto">Manifesto</a></li>
+          <li><a href="index.html#cycle">The Cycle</a></li>
+          <li><a href="index.html#first-publication">First Book</a></li>
+          <li><a href="loom.html">The Loom</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:loosethreadspress@gmail.com?subject=Mailing%20list">Mailing list</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com?subject=Submissions">Submissions</a></li>
+          <li><a href="mailto:loosethreadspress@gmail.com">loosethreadspress@gmail.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Loose Threads Press</span>
+      <span>Kitchener-Waterloo · Treaty Territory of the Haudenosaunee, Anishinaabe, and Neutral Peoples</span>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
+</script>
+
+</body>
+</html>
